@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<insert id="create" parameterType="hashMap">
+		insert into webmarketdb.cart(cartId, productId, memberId, quantity)
+		values(#{id}#{passwd},#{passwd},#{name},5 )
+	</insert>
+	
+	<select id="select_detail" parameterType="hashMap" resultType="hashMap">
+		select * from member where id = #{id}   
+	</select>
+	<update id="update" parameterType="hashMap">
+		update member 
+			set name = #{name}, regist_day = now()
+		where id = #{id}
+	</update>
+	
+	<select id="list" resultType="hashMap">
+		select *
+			from member
+	</select>
+	
+	<delete id="delete" parameterType="hashMap">
+		delete from member where id = #{id}
+	</delete>
+	
+	<select id="cartlist" parameterType = "hashMap" resultType="hashMap">
+	select * from webmarketdb.cart where memberId = #{id}
+</select>
+	
+</mapper>  
